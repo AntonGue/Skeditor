@@ -1,1 +1,2 @@
-Download keymaerax.jar from https://github.com/LS-Lab/KeYmaeraX-release/blob/master/README.md
+Download keymaerax.jar http://keymaerax.org/keymaerax.jar
+Download antlr-4.7.1-complete.jar from https://www.antlr.org/download/antlr-4.7.1-complete.jar
