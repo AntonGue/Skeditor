@@ -23,7 +23,8 @@ import org.eclipse.ui.dialogs.ResourceSelectionDialog;
 
 public class LoadModelPage extends WizardPage {
 	private Text containerText;
-	private Text resourceText;
+	private Text resourceAText;
+	private Text resourceBText;
 	private Text fileText;
 	private ISelection selection;
 	
@@ -66,10 +67,10 @@ public class LoadModelPage extends WizardPage {
 		label = new Label(container, SWT.NULL);
 		label.setText("&XML Model File:");
 
-		resourceText = new Text(container, SWT.BORDER | SWT.SINGLE);
+		resourceAText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		GridData gdX = new GridData(GridData.FILL_HORIZONTAL);
-		resourceText.setLayoutData(gdX);
-		resourceText.addModifyListener(new ModifyListener() {
+		resourceAText.setLayoutData(gdX);
+		resourceAText.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
@@ -80,7 +81,28 @@ public class LoadModelPage extends WizardPage {
 		buttonX.setText("Browse...");
 		buttonX.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent b) {
-				handleBrowseResource(resourceText);
+				handleBrowseResource(resourceAText);
+			}
+		});
+		
+		label = new Label(container, SWT.NULL);
+		label.setText("&XML Configuration File:");
+
+		resourceBText = new Text(container, SWT.BORDER | SWT.SINGLE);
+		gdX = new GridData(GridData.FILL_HORIZONTAL);
+		resourceBText.setLayoutData(gdX);
+		resourceBText.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				dialogChanged();
+			}
+		});
+
+		Button buttonY = new Button(container, SWT.PUSH);
+		buttonY.setText("Browse...");
+		buttonY.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent b) {
+				handleBrowseResource(resourceBText);
 			}
 		});
 		
@@ -116,7 +138,7 @@ public class LoadModelPage extends WizardPage {
 				containerText.setText(container.getFullPath().toString());
 			}
 		}
-		fileText.setText("default.sked");
+		fileText.setText("myGraph.sked");
 	}
 
 	/**
@@ -137,7 +159,7 @@ public class LoadModelPage extends WizardPage {
 
 	private void handleBrowseResource(Text text) {
 		ResourceSelectionDialog dialog = new ResourceSelectionDialog(getShell(),
-				ResourcesPlugin.getWorkspace().getRoot(), "Select XML model file");
+				ResourcesPlugin.getWorkspace().getRoot(), "Select resource file");
 		if (dialog.open() == ResourceSelectionDialog.OK) {
 			Object[] result = dialog.getResult();
 			if (result.length != 0) {
@@ -161,7 +183,11 @@ public class LoadModelPage extends WizardPage {
 		
 
 		if (getModelName().length() == 0) {
-			updateStatus("Model File must be specified");
+			updateStatus("Model file must be specified");
+			return;
+		}
+		if (getConfigName().length() == 0) {
+			updateStatus("Configuration file must be specified");
 			return;
 		}
 		if (getContainerName().length() == 0) {
@@ -173,7 +199,7 @@ public class LoadModelPage extends WizardPage {
 			return;
 		}
 		if (model == null || (model.getType() & (IResource.FILE)) == 0) {
-			updateStatus("Model File must exist");
+			updateStatus("Model file must exist");
 			return;
 		}
 		if (!container.isAccessible()) {
@@ -183,6 +209,14 @@ public class LoadModelPage extends WizardPage {
 		int dotLoc = getModelName().lastIndexOf('.');
 		if (dotLoc != -1) {
 			String ext = getModelName().substring(dotLoc + 1);
+			if (ext.equalsIgnoreCase("xml") == false) {
+				updateStatus("File extension must be \"xml\"");
+				return;
+			}
+		}
+		dotLoc = getConfigName().lastIndexOf('.');
+		if (dotLoc != -1) {
+			String ext = getConfigName().substring(dotLoc + 1);
 			if (ext.equalsIgnoreCase("xml") == false) {
 				updateStatus("File extension must be \"xml\"");
 				return;
@@ -213,7 +247,11 @@ public class LoadModelPage extends WizardPage {
 	}
 
 	public String getModelName() {
-		return resourceText.getText();
+		return resourceAText.getText();
+	}
+	
+	public String getConfigName() {
+		return resourceBText.getText();
 	}
 	
 }

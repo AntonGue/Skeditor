@@ -1,18 +1,14 @@
 package de.tubs.skeditor.spl.utils;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import de.ovgu.featureide.fm.core.analysis.cnf.CNF;
 import de.ovgu.featureide.fm.core.analysis.cnf.LiteralSet;
 import de.ovgu.featureide.fm.core.analysis.cnf.formula.FeatureModelFormula;
-import de.ovgu.featureide.fm.core.base.IConstraint;
 import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
-import de.ovgu.featureide.fm.core.base.IFeatureModelStructure;
 import de.ovgu.featureide.fm.core.base.IFeatureStructure;
 import de.ovgu.featureide.fm.core.base.impl.ConfigFormatManager;
 import de.ovgu.featureide.fm.core.base.impl.ConfigurationFactoryManager;
@@ -37,32 +33,37 @@ public class ConfigLoader {
 	
 	final String LINE_NUMBER_KEY_NAME = "lineNumber"; //$NON-NLS-1$
 	
-	public ConfigLoader() {
+	public Configuration config;
+	
+	public IFeatureModel model;
+	
+//	public ConfigLoader() {
+//		new ConfigLoader(Paths.get("model.xml"), Paths.get("configs/default.xml"));
+//	}
+	
+	public ConfigLoader(Path configPath, Path modelpath) {
+		config = getConfiguration(configPath, modelpath);
+		model = config.getFeatureModel();
 	}
 	
-	Path modelpath = Paths.get("model.xml");
-	Path configPath = Paths.get("configs/default.xml");
-	
-	IFeatureModel fmodel = getFeatureModel(modelpath);
-	
-	IFeatureModelStructure fmstruct = fmodel.getStructure(); //Struktur mit "tiefe".
-	List<IConstraint> fconstraint = fmodel.getConstraints();
-	
-	final boolean hashidden = fmstruct.hasHidden();
-	
-	IFeatureStructure fstruct = fmstruct.getRoot();
-	
-	List<String> iter =  fmodel.getFeatureOrderList(); //Feature Liste ohne abstrakte Features
-	
-	public static IFeatureModel getFeatureModel(Path featureModelPath) {
+	/**
+	 * Loads the IFratueModel from the path
+	 * @param featureModelPath The path for the featureModel file
+	 * @return The IFeatureModel in the file
+	 */
+	public IFeatureModel getFeatureModel(Path featureModelPath) {
 		XmlFeatureModelFormat format = new XmlFeatureModelFormat();
 		FMFormatManager.getInstance().addExtension(format);
-
-		FMFactoryManager.getInstance().addExtension(DefaultFeatureModelFactory.getInstance());
+		
+		checkFeatureModel(featureModelPath);
+		
+		FMFactoryManager.getInstance().addExtension(
+				DefaultFeatureModelFactory.getInstance());
 		FMFactoryManager.getInstance().setWorkspaceLoader(null);
 		FMFactoryManager.getInstance().addFactoryWorkspace(featureModelPath);
 
-		FileHandler<IFeatureModel> fmHandler = FeatureModelManager.getFileHandler(featureModelPath);
+		FileHandler<IFeatureModel> fmHandler =
+				FeatureModelManager.getFileHandler(featureModelPath);
 		IFeatureModel model = fmHandler.getObject();
 
 		if (model == null) {
@@ -73,37 +74,43 @@ public class ConfigLoader {
 	}
 	
 	/**
-	 * Loads the Configuration, based on the configuration file and the featureModel file
+	 * Loads the Configuration from the Path based on the featureModel file
 	 * @param configuationPath The path of the configuration file
 	 * @param modelPath The path of the featureModel file
 	 * @return The configuration for the given IFeatureModel
 	 */
-	public static Configuration getConfiguration(Path configurationPath, Path modelPath) {//, IFeatureModelManager featureModelManager) {
+	public Configuration getConfiguration(Path configurationPath, Path modelPath) {
 		XMLConfFormat format = new XMLConfFormat();
 		ConfigFormatManager.getInstance().addExtension(format);
 		
-		ConfigurationFactoryManager.getInstance().addExtension(DefaultConfigurationFactory.getInstance());
+		checkConfiguration(configurationPath);
+		
+		ConfigurationFactoryManager.getInstance().addExtension(
+				DefaultConfigurationFactory.getInstance());
 		ConfigurationFactoryManager.getInstance().setWorkspaceLoader(null);
 		ConfigurationFactoryManager.getInstance().addFactoryWorkspace(configurationPath);
 
-		final FileHandler<Configuration> confHandler = ConfigurationManager.getFileHandler(configurationPath);
+		final FileHandler<Configuration> confHandler =
+				ConfigurationManager.getFileHandler(configurationPath);
 		final Configuration confi = confHandler.getObject();
 
 		if (confi == null) {
 			throw new NullPointerException("Configuration is null");
 		}
-		return new Configuration(confi, new FeatureModelFormula(getFeatureModel(modelPath)));
-	} 
-	
+		return new Configuration(confi,
+				new FeatureModelFormula(getFeatureModel(modelPath)));
+	}
 	/**
-	 * Loads the Configuration, based on the configuration file and the IFeatureModel
+	 * Loads the Configuration from the Path based on the IFeatureModel
 	 * @param configuationPath The path of the configuration file
 	 * @param model The IFeatureModel that the Configuration is based on
 	 * @return The configuration for the given IFeatureModel
 	 */
-	public static Configuration getConfiguration(Path configurationPath, IFeatureModel model) {//, IFeatureModelManager featureModelManager) {
+	public Configuration getConfiguration(Path configurationPath, IFeatureModel model) {
 		XMLConfFormat format = new XMLConfFormat();
 		ConfigFormatManager.getInstance().addExtension(format);
+		
+		checkConfiguration(configurationPath);
 		
 		ConfigurationFactoryManager.getInstance().addExtension(DefaultConfigurationFactory.getInstance());
 		ConfigurationFactoryManager.getInstance().setWorkspaceLoader(null);
@@ -118,7 +125,21 @@ public class ConfigLoader {
 		return new Configuration(confi, new FeatureModelFormula(model));
 	} 
 	
-	public static int getMaxDepth(IFeatureStructure ifs) {
+	public void checkFeatureModel(Path featureModelPath) {
+		if ((null == FMFormatManager.getInstance().getFormatByContent(featureModelPath)) ||
+				(!FMFormatManager.getInstance().getFormatByContent(featureModelPath).getId().equals(new XmlFeatureModelFormat().getId()))) {
+			throw new IllegalArgumentException("This is not a FeatureModel file");
+		}
+	}
+	
+	public void checkConfiguration(Path configurationPath) {
+		if ((null == ConfigFormatManager.getInstance().getFormatByContent(configurationPath)) ||
+				(!ConfigFormatManager.getInstance().getFormatByContent(configurationPath).getId().equals(new XMLConfFormat().getId()))) {
+			throw new IllegalArgumentException("This is not a Configuration file");
+		}
+	}
+	
+	public int getMaxDepth(IFeatureStructure ifs) {
 		final char[] struc = ifs.toString().toCharArray();
 		int maxDepth = 0;
 		int depth = 0;
@@ -137,7 +158,7 @@ public class ConfigLoader {
 		return maxDepth;
 	}
 	
-	public static Configuration generateConfiguration(IFeatureModel fm, CNF cnf, LiteralSet solution) {
+	public Configuration generateConfiguration(IFeatureModel fm, CNF cnf, LiteralSet solution) {
 		Configuration configuration = new Configuration(new FeatureModelFormula(fm));
 		for (final int selection : solution.getLiterals()) {
 			final String name = cnf.getVariables().getName(selection);
@@ -146,7 +167,7 @@ public class ConfigLoader {
 		return configuration;
 	}
 	
-	public static Set<String> ConfigurationToString(Configuration c) {
+	public Set<String> ConfigurationToString(Configuration c) {
 		Set<String> set = new HashSet<>();
 		for (IFeature sf : c.getSelectedFeatures()) {
 			set.add(sf.getName());
