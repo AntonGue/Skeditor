@@ -27,7 +27,7 @@ public class LoadModelPage extends WizardPage {
 	private Text resourceBText;
 	private Text fileText;
 	private ISelection selection;
-	
+		
 	protected LoadModelPage(ISelection select) {
 		super("wizardPage");		
 		setTitle("Load XML model file");

@@ -13,7 +13,7 @@
             class="de.tubs.skeditor.spl.wizards.TestWizard"
             icon="icons/project16.png"
             id="de.tubs.skeditor.spl.SPLNewWizard"
-            name="Skeditor X FeatureIDE">
+            name="Configurate Skeditor">
       </wizard>
    </extension>
 

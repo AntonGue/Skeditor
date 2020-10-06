@@ -9,7 +9,6 @@ import de.ovgu.featureide.fm.core.analysis.cnf.LiteralSet;
 import de.ovgu.featureide.fm.core.analysis.cnf.formula.FeatureModelFormula;
 import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
-import de.ovgu.featureide.fm.core.base.IFeatureStructure;
 import de.ovgu.featureide.fm.core.base.impl.ConfigFormatManager;
 import de.ovgu.featureide.fm.core.base.impl.ConfigurationFactoryManager;
 import de.ovgu.featureide.fm.core.base.impl.DefaultConfigurationFactory;
@@ -125,37 +124,18 @@ public class ConfigLoader {
 		return new Configuration(confi, new FeatureModelFormula(model));
 	} 
 	
-	public void checkFeatureModel(Path featureModelPath) {
+	protected void checkFeatureModel(Path featureModelPath) {
 		if ((null == FMFormatManager.getInstance().getFormatByContent(featureModelPath)) ||
 				(!FMFormatManager.getInstance().getFormatByContent(featureModelPath).getId().equals(new XmlFeatureModelFormat().getId()))) {
 			throw new IllegalArgumentException("This is not a FeatureModel file");
 		}
 	}
 	
-	public void checkConfiguration(Path configurationPath) {
+	protected void checkConfiguration(Path configurationPath) {
 		if ((null == ConfigFormatManager.getInstance().getFormatByContent(configurationPath)) ||
 				(!ConfigFormatManager.getInstance().getFormatByContent(configurationPath).getId().equals(new XMLConfFormat().getId()))) {
 			throw new IllegalArgumentException("This is not a Configuration file");
 		}
-	}
-	
-	public int getMaxDepth(IFeatureStructure ifs) {
-		final char[] struc = ifs.toString().toCharArray();
-		int maxDepth = 0;
-		int depth = 0;
-		
-		for (char ch : struc) {
-			if (ch == '[') {
-				depth++;
-			}
-			else if (ch == ']') {
-				depth--;
-			}
-			if (depth > maxDepth) {
-				maxDepth = depth;
-			}
-		}
-		return maxDepth;
 	}
 	
 	public Configuration generateConfiguration(IFeatureModel fm, CNF cnf, LiteralSet solution) {

@@ -1,5 +1,8 @@
 package de.tubs.skeditor.spl;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -7,7 +10,7 @@ import org.osgi.framework.BundleContext;
  *
  * @author Alexander Knueppel, Anton Guenther 
  */
-public class SplPlugin extends de.tubs.skeditor.Activator {
+public class SplPlugin extends AbstractUIPlugin {
 	
 	// The plug-in ID
 	public static final String PLUGIN_ID = "de.tubs.skeditor.spl"; //$NON-NLS-1$
@@ -28,17 +31,6 @@ public class SplPlugin extends de.tubs.skeditor.Activator {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		new Thread() {
-
-			@Override
-			public void run() {
-				try {
-					ClassLoader.getSystemClassLoader().loadClass("de.tubs.skeditor.spl.wizards.TestWizard");
-				} catch (final ClassNotFoundException e) {
-					SplPlugin.getDefault().logError(e);
-				}
-			};
-		}.start();
 	}
 
 	/*
@@ -49,19 +41,9 @@ public class SplPlugin extends de.tubs.skeditor.Activator {
 		plugin = null;
 		super.stop(context);
 	}
-
-	/**
-	 * Returns the shared instance
-	 *
-	 * @return the shared instance
-	 */
-	public static SplPlugin getDefault() {
-		return plugin;
-	}
-
-	@Override
+	
 	public String getID() {
-		return SplPlugin.PLUGIN_ID;
+		return PLUGIN_ID;
 	}
 
 }
