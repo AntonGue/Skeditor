@@ -1,5 +1,15 @@
 package de.tubs.skeditor.spl.wizards;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 //import java.io.ByteArrayInputStream;
 //import java.io.InputStream;
 //
@@ -13,7 +23,10 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 
+import de.tubs.skeditor.spl.SplPlugin;
+
 public class TestWizard extends Wizard implements INewWizard {
+	public static final String ID = SplPlugin.PLUGIN_ID;
 	
 	private LoadModelPage loadMPage;
 	private ISelection selection;
@@ -28,37 +41,37 @@ public class TestWizard extends Wizard implements INewWizard {
 		loadMPage = new LoadModelPage(selection);
 		addPage(loadMPage);
 	}
-	
+		
 	@Override
 	public boolean performFinish() {	//Überarbeiten
-//		final String containerName = loadMPage.getContainerName();
-//		final String modelName = loadMPage.getModelName();
-//		final String fileName = loadMPage.getFileName();
-//		IRunnableWithProgress op = new IRunnableWithProgress() {
-//			public void run(IProgressMonitor monitor) throws InvocationTargetException {
-//				try {
-//					doFinish(containerName, fileName, monitor, modelName, fileName);
-//				} catch (CoreException e) {
-//					throw new InvocationTargetException(e);
-//				} finally {
-//					monitor.done();
-//				}
-//			}
-//		};
-//		try {
-//			getContainer().run(true, false, op);
-//		} catch (InterruptedException e) {
-//			return false;
-//		} catch (InvocationTargetException e) {
-//			Throwable realException = e.getTargetException();
-//			MessageDialog.openError(getShell(), "Error", realException.getMessage());
-//			return false;
-//		}
+		final String containerName = loadMPage.getContainerName();
+		final String modelName = loadMPage.getModelName();
+		final String fileName = loadMPage.getFileName();
+		IRunnableWithProgress op = new IRunnableWithProgress() {
+			public void run(IProgressMonitor monitor) throws InvocationTargetException {
+				try {
+					doFinish(containerName, fileName, monitor, modelName, fileName);
+				} catch (CoreException e) {
+					throw new InvocationTargetException(e);
+				} finally {
+					monitor.done();
+				}
+			}
+		};
+		try {
+			getContainer().run(true, false, op);
+		} catch (InterruptedException e) {
+			return false;
+		} catch (InvocationTargetException e) {
+			Throwable realException = e.getTargetException();
+			MessageDialog.openError(getShell(), "Error", realException.getMessage());
+			return false;
+		}
 		return true;
 	}
 	
-//	private void doFinish(String containerName, String fileName, IProgressMonitor monitor, String GraphA, String GraphB)
-//			throws CoreException {
+	private void doFinish(String containerName, String fileName, IProgressMonitor monitor, String GraphA, String GraphB)
+			throws CoreException {
 		// create a sample file
 //		monitor.beginTask("Creating " + fileName, 2);
 //		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
@@ -108,17 +121,17 @@ public class TestWizard extends Wizard implements INewWizard {
 //			}
 //		});
 //		monitor.worked(1);
-//	}
+	}
 	
-//	private InputStream openContentStream() {
-//		String contents = "This is the initial file contents for *.sked files that should be word-sorted in the Preview page of the multi-page editor";
-//		return new ByteArrayInputStream(contents.getBytes());
-//	}
-//
-//	private void throwCoreException(String message) throws CoreException {
-//		IStatus status = new Status(IStatus.ERROR, "ContractModelling", IStatus.OK, message, null);
-//		throw new CoreException(status);
-//	}
+	private InputStream openContentStream() {
+		String contents = "This is the initial file contents for *.sked files that should be word-sorted in the Preview page of the multi-page editor";
+		return new ByteArrayInputStream(contents.getBytes());
+	}
+
+	private void throwCoreException(String message) throws CoreException {
+		IStatus status = new Status(IStatus.ERROR, "ContractModelling", IStatus.OK, message, null);
+		throw new CoreException(status);
+	}
 	
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {

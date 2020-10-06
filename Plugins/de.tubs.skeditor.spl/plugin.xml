@@ -12,7 +12,7 @@
             category="de.tubs.skeditor.category.skeditor"
             class="de.tubs.skeditor.spl.wizards.TestWizard"
             icon="icons/project16.png"
-            id="de.tubs.skeditor.spl.SPLNewWizard"
+            id="de.tubs.skeditor.spl.newspl"
             name="Configurate Skeditor">
       </wizard>
    </extension>

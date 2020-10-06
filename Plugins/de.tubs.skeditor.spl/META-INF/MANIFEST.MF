@@ -3,7 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Spl
 Bundle-SymbolicName: de.tubs.skeditor.spl;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: libs/de.ovgu.featureide.lib.fm-v3.6.3.jar
+Bundle-ClassPath: .,
+ libs/de.ovgu.featureide.lib.fm-v3.6.3.jar
 Bundle-Activator: de.tubs.skeditor.spl.SplPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -12,10 +13,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide,
  org.eclipse.emf.transaction,
  org.eclipse.xtext,
+ de.tubs.skeditor.spl.featuremap,
  de.tubs.skeditor;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: de.tubs.skeditor.spl
 Bundle-ActivationPolicy: lazy
-Import-Package: de.tubs.skeditor.spl,
- de.tubs.skeditor.spl.featureMap,
- org.eclipse.core.resources
+Import-Package: org.eclipse.core.resources
