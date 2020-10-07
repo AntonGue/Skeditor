@@ -44,26 +44,25 @@
       </imageProvider>
    </extension>
    <extension point="org.eclipse.ui.views">
-   <view
-         class="de.tubs.skeditor.views.SafetyGoalsView"
-         id="de.tubs.skeditor.views.SafetyGoalsView"
-         name="Safety Goals"/>
-   </extension>
-   <extension
-         point="org.eclipse.ui.views">
-      <view
+	   <category
+	            id="de.tubs.skeditor.category.skeditor"
+	            name="Skeditor"/>
+		<view
+			category="de.tubs.skeditor.category.skeditor"
+			class="de.tubs.skeditor.views.SafetyGoalsView"
+			id="de.tubs.skeditor.views.SafetyGoalsView"
+			name="Safety Goals"/>
+		<view
+      		category="de.tubs.skeditor.category.skeditor"
             class="de.tubs.skeditor.views.ParameterListView"
             id="de.tubs.skeditor.views.ParameterListView"
-            name="Parameter List">
-      </view>
-   </extension>
-   <extension
-         point="org.eclipse.ui.views">
-      <view
+            name="Parameter List"/>
+      	<view
+      		category="de.tubs.skeditor.category.skeditor"
             class="de.tubs.skeditor.views.DynamicModelView"
             id="de.tubs.skeditor.views.DifferentialEquationView"
             name="Dynamic Model">
-      </view>
+		</view>
    </extension>
    <extension
          point="org.eclipse.ui.editors">
