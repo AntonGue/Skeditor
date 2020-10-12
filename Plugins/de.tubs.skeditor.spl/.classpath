@@ -8,6 +8,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="lib" path="libs/de.ovgu.featureide.lib.fm-v3.6.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Polly111/.p2/pool/plugins/org.eclipse.emf.transaction_1.9.1.201805140824.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

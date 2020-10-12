@@ -22,17 +22,19 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 import org.eclipse.ui.dialogs.ResourceSelectionDialog;
 
 public class LoadModelPage extends WizardPage {
+
 	private Text containerText;
-	private Text resourceAText;
-	private Text resourceBText;
+	private Text modelText;
+	private Text configuText;
+	private Text mappingText;
 	private Text fileText;
 	private ISelection selection;
-		
-	protected LoadModelPage(ISelection select) {
-		super("wizardPage");		
-		setTitle("Load XML model file");
-		setDescription("This page is for loading the FeatureModel file.");
-		this.selection = select;
+	
+	public LoadModelPage(ISelection selection) {
+		super("wizardPage");
+		setTitle("Skeditor Feature Composition");
+		setDescription("This wizard composes Skill Graphs based on selected Features.");
+		this.selection = selection;
 	}
 	
 	@Override
@@ -67,10 +69,10 @@ public class LoadModelPage extends WizardPage {
 		label = new Label(container, SWT.NULL);
 		label.setText("&XML Model File:");
 
-		resourceAText = new Text(container, SWT.BORDER | SWT.SINGLE);
+		modelText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		GridData gdX = new GridData(GridData.FILL_HORIZONTAL);
-		resourceAText.setLayoutData(gdX);
-		resourceAText.addModifyListener(new ModifyListener() {
+		modelText.setLayoutData(gdX);
+		modelText.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
@@ -81,17 +83,17 @@ public class LoadModelPage extends WizardPage {
 		buttonX.setText("Browse...");
 		buttonX.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent b) {
-				handleBrowseResource(resourceAText);
+				handleBrowseResource(modelText);
 			}
 		});
 		
 		label = new Label(container, SWT.NULL);
 		label.setText("&XML Configuration File:");
 
-		resourceBText = new Text(container, SWT.BORDER | SWT.SINGLE);
+		configuText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		gdX = new GridData(GridData.FILL_HORIZONTAL);
-		resourceBText.setLayoutData(gdX);
-		resourceBText.addModifyListener(new ModifyListener() {
+		configuText.setLayoutData(gdX);
+		configuText.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
@@ -102,7 +104,28 @@ public class LoadModelPage extends WizardPage {
 		buttonY.setText("Browse...");
 		buttonY.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent b) {
-				handleBrowseResource(resourceBText);
+				handleBrowseResource(configuText);
+			}
+		});
+		
+		label = new Label(container, SWT.NULL);
+		label.setText("&FMP Mapping File:");
+
+		mappingText = new Text(container, SWT.BORDER | SWT.SINGLE);
+		gdX = new GridData(GridData.FILL_HORIZONTAL);
+		mappingText.setLayoutData(gdX);
+		mappingText.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				dialogChanged();
+			}
+		});
+
+		Button buttonZ = new Button(container, SWT.PUSH);
+		buttonZ.setText("Browse...");
+		buttonZ.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent b) {
+				handleBrowseResource(mappingText);
 			}
 		});
 		
@@ -138,6 +161,10 @@ public class LoadModelPage extends WizardPage {
 				containerText.setText(container.getFullPath().toString());
 			}
 		}
+		containerText.setText("/Testing");
+		modelText.setText("/Testing/model.xml");
+		configuText.setText("/Testing/configs/default.xml");
+		mappingText.setText("/Testing/mapping.fmp");
 		fileText.setText("myGraph.sked");
 	}
 
@@ -180,8 +207,14 @@ public class LoadModelPage extends WizardPage {
 	private void dialogChanged() {
 		IResource container = ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(getContainerName()));
 		IResource model = ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(getModelName()));
-		
+		IResource confi = ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(getConfigName()));
+		IResource map = ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(getMapName()));
 
+
+		if (getContainerName().length() == 0) {
+			updateStatus("File container must be specified");
+			return;
+		}
 		if (getModelName().length() == 0) {
 			updateStatus("Model file must be specified");
 			return;
@@ -190,8 +223,8 @@ public class LoadModelPage extends WizardPage {
 			updateStatus("Configuration file must be specified");
 			return;
 		}
-		if (getContainerName().length() == 0) {
-			updateStatus("File container must be specified");
+		if (getMapName().length() == 0) {
+			updateStatus("FeatureMaP file must be specified");
 			return;
 		}
 		if (container == null || (container.getType() & (IResource.PROJECT | IResource.FOLDER)) == 0) {
@@ -200,6 +233,14 @@ public class LoadModelPage extends WizardPage {
 		}
 		if (model == null || (model.getType() & (IResource.FILE)) == 0) {
 			updateStatus("Model file must exist");
+			return;
+		}
+		if (confi == null || (confi.getType() & (IResource.FILE)) == 0) {
+			updateStatus("Configuration file must exist");
+			return;
+		}
+		if (map == null || (map.getType() & (IResource.FILE)) == 0) {
+			updateStatus("Mapping file must exist");
 			return;
 		}
 		if (!container.isAccessible()) {
@@ -219,6 +260,14 @@ public class LoadModelPage extends WizardPage {
 			String ext = getConfigName().substring(dotLoc + 1);
 			if (ext.equalsIgnoreCase("xml") == false) {
 				updateStatus("File extension must be \"xml\"");
+				return;
+			}
+		}
+		dotLoc = getMapName().lastIndexOf('.');
+		if (dotLoc != -1) {
+			String ext = getMapName().substring(dotLoc + 1);
+			if (ext.equalsIgnoreCase("fmp") == false) {
+				updateStatus("File extension must be \"fmp\"");
 				return;
 			}
 		}
@@ -247,11 +296,15 @@ public class LoadModelPage extends WizardPage {
 	}
 
 	public String getModelName() {
-		return resourceAText.getText();
+		return modelText.getText();
 	}
 	
 	public String getConfigName() {
-		return resourceBText.getText();
+		return configuText.getText();
+	}
+	
+	public String getMapName() {
+		return mappingText.getText();
 	}
 	
 }

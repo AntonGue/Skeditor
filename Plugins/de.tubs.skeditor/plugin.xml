@@ -87,7 +87,8 @@
             class="de.tubs.skeditor.wizards.NewProjectWizard"
             icon="icons/project16.png"
             id="de.tubs.skeditor.newproject"
-            name="Skeditor Project">
+            name="Skeditor Project"
+            project="true">
       </wizard>
       <wizard
             category="de.tubs.skeditor.category.skeditor"

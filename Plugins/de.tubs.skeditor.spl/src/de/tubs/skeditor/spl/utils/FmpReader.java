@@ -29,14 +29,27 @@ public class FmpReader {
 	 * @return An EList<String> with the paths to all .sked files needed
 	 * @throws FileNotFoundException
 	 */
+	
+	public static EList<String> extractGraphsViaConfiguration(String uri,  Configuration config) throws FileNotFoundException {
+		return extractGraphsViaConfiguration(URI.createFileURI(uri),config);
+	}
+	
 	public static EList<String> extractGraphsViaConfiguration(URI uri,  Configuration config) throws FileNotFoundException {
-		EList<Types> entries = getFeatureMap(uri).getEntries();
-		EList<Alloc> filtAllocs = filterSelected(getMapping(entries).getAllocs(), config);
+		Model model = getFeatureMap(uri);
+		String uriStr = uri.toFileString().replace('\\', '/');
+		String prev = "";
+		int slaLoc = uriStr.lastIndexOf('/');
+		if (slaLoc != -1) {
+			prev = uriStr.substring(0, slaLoc+1);
+		}
+		String modelPath = prev.concat(model.getGpath().getGraphspath());
+			
+		EList<Alloc> filtAllocs = filterSelected(model.getMapping().getAllocs(), config);
 
-		String graphPath = pathFormat(getGPath(entries).getGraphspath());
+		String graphPath = pathFormat(modelPath);
 		
 		EList<String> allGraphs = addFolder(graphPath, extractGraphs(filtAllocs));
-		allGraphs.add(addFolder(graphPath, getBasic(entries).getBasic()));
+		allGraphs.add(0, addFolder(graphPath, model.getBasic().getBasic()));
 		return allGraphs;
 	}
 	
@@ -87,15 +100,6 @@ public class FmpReader {
 		return concreteF;
 	}
 	
-	protected static Mapping getMapping(EList<Types> types) {
-		for (Types typ : types) {
-			if (typ instanceof Mapping) {
-				return (Mapping) typ;
-			}
-		}
-		return null;
-	}
-	
 	protected static String pathFormat(String pathName) {
 		String result = "";
 		File path = new File(pathName);
@@ -107,16 +111,7 @@ public class FmpReader {
 		}
 		return result;
 	}
-
-	protected static GPath getGPath(EList<Types> types) {
-		for (Types typ : types) {
-			if (typ instanceof GPath) {
-				return (GPath) typ;
-			}
-		}
-		return null;
-	}
-			
+	
 	protected static String addFolder(String folderPath, String graphName) throws FileNotFoundException {
 		String fullPath = folderPath.concat(skedPathFormat(folderPath, graphName));
 		return fullPath;
@@ -130,7 +125,7 @@ public class FmpReader {
 		return fullPath;
 	}
 	
-	protected static String skedPathFormat (String gPath, String skedFile) throws FileNotFoundException {
+	protected static String skedPathFormat(String gPath, String skedFile) throws FileNotFoundException {
 		String result = "";
 		if (skedFile.charAt(0) != '/') {
 			skedFile = '/' + skedFile;
@@ -151,14 +146,5 @@ public class FmpReader {
 			extracted.addAll(iteratorA.getFeat_graph());
 		}
 		return extracted;
-	}
-
-	protected static Basic getBasic(EList<Types> types) {
-		for (Types typ : types) {
-			if (typ instanceof Basic) {
-				return (Basic) typ;
-			}
-		}
-		return null;
 	}
 }

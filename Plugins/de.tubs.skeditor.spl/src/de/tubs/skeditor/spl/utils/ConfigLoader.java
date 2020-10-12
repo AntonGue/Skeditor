@@ -1,6 +1,7 @@
 package de.tubs.skeditor.spl.utils;
 
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -39,6 +40,14 @@ public class ConfigLoader {
 //	public ConfigLoader() {
 //		new ConfigLoader(Paths.get("model.xml"), Paths.get("configs/default.xml"));
 //	}
+	
+	public ConfigLoader() {
+	}
+	
+	public ConfigLoader(String configPath, String modelpath) {
+		config = getConfiguration(Paths.get(configPath), Paths.get(modelpath));
+		model = config.getFeatureModel();
+	}
 	
 	public ConfigLoader(Path configPath, Path modelpath) {
 		config = getConfiguration(configPath, modelpath);
