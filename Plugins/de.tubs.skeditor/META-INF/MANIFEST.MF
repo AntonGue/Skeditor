@@ -25,5 +25,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: SkillGraph,
  SkillGraph.impl,
  SkillGraph.util,
- de.tubs.skeditor
+ de.tubs.skeditor,
+ de.tubs.skeditor.compositionality,
+ de.tubs.skeditor.views,
+ de.tubs.skeditor.wizards
 Bundle-Activator: de.tubs.skeditor.Activator
