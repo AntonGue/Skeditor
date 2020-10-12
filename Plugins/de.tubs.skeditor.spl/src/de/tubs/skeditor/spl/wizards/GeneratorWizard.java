@@ -38,14 +38,14 @@ import de.tubs.skeditor.spl.utils.FmpReader;
 import de.tubs.skeditor.compositionality.CreateFileOperationCompose;
 import de.tubs.skeditor.views.SafetyGoalsView;
 
-public class TestWizard extends Wizard implements INewWizard {
+public class GeneratorWizard extends Wizard implements INewWizard {
 
 	public static final String ID = SplPlugin.PLUGIN_ID;
 	
-	private LoadModelPage loadMPage;
+	private GeneratorWizardPage loadMPage;
 	private ISelection selection;
 
-	public TestWizard() {
+	public GeneratorWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
@@ -55,7 +55,7 @@ public class TestWizard extends Wizard implements INewWizard {
 	 */
 	@Override
 	public void addPages() {
-		loadMPage = new LoadModelPage(selection);
+		loadMPage = new GeneratorWizardPage(selection);
 		addPage(loadMPage);
 	}
 		

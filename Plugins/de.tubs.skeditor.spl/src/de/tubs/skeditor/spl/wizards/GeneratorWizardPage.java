@@ -21,7 +21,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 import org.eclipse.ui.dialogs.ResourceSelectionDialog;
 
-public class LoadModelPage extends WizardPage {
+public class GeneratorWizardPage extends WizardPage {
 
 	private Text containerText;
 	private Text modelText;
@@ -30,7 +30,7 @@ public class LoadModelPage extends WizardPage {
 	private Text fileText;
 	private ISelection selection;
 	
-	public LoadModelPage(ISelection selection) {
+	public GeneratorWizardPage(ISelection selection) {
 		super("wizardPage");
 		setTitle("Skeditor Feature Composition");
 		setDescription("This wizard composes Skill Graphs based on selected Features.");
