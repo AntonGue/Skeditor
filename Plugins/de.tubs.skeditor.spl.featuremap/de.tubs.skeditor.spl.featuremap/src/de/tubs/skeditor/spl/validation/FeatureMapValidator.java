@@ -22,7 +22,6 @@ public class FeatureMapValidator extends AbstractFeatureMapValidator {
 	
 	public static final String INVALID_NAME = "invalidName";
 	public static final String INVALID_Type = "invalidType";
-	public static final String INVALID_SET = "invalidSet";
 	public static final String FEATURE_NAME = "featureName";
 	public static final String STOP_AMOUNT = "stopAmount";
 
@@ -67,26 +66,11 @@ public class FeatureMapValidator extends AbstractFeatureMapValidator {
 	@Check
 	public void checkGraphSet(Alloc alloc) {
 		int graphCount = alloc.getFeat_graph().size();
-		if (graphCount > 1) {
-			if (!(hasBracketL(alloc) && hasBracketR(alloc))) {
-				error("Use brackets '{' and '}' for a set",
-						FeatureMapPackage.Literals.ALLOC__FEAT_GRAPH,
-						INVALID_SET);
-			}
-		}
-		if (alloc.getStop().size()+1 != graphCount) {
+				if (alloc.getStop().size()+1 != graphCount) {
 			error("',' is needed or too many",
 					FeatureMapPackage.Literals.ALLOC__STOP,
 					STOP_AMOUNT);
 		}
-	}
-	
-	private boolean hasBracketL(Alloc alloc) {
-		return alloc.getBr() != null;
-	}
-	
-	private boolean hasBracketR(Alloc alloc) {
-		return alloc.getBl() != null;
 	}
 	
 	@Check

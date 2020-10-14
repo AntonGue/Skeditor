@@ -22,10 +22,8 @@
     </genClasses>
     <genClasses ecoreClass="FeatureMap.ecore#//Alloc">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FeatureMap.ecore#//Alloc/feature"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FeatureMap.ecore#//Alloc/bl"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FeatureMap.ecore#//Alloc/feat_graph"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FeatureMap.ecore#//Alloc/stop"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FeatureMap.ecore#//Alloc/br"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

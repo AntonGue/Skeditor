@@ -17,13 +17,7 @@ Mapping:
 	'mapping' ':' allocs+=Alloc+;
 	
 Alloc:
-	feature=ID '->' bl=BL? (feat_graph+=STRING stop+=Stop?)* feat_graph+=STRING br=BR?;
-	
-BL:
-	'{';
+	feature=ID '->' '{' (feat_graph+=STRING stop+=Stop)* feat_graph+=STRING '}';
 	
 Stop:
 	',';
-	
-BR:
-	'}';
