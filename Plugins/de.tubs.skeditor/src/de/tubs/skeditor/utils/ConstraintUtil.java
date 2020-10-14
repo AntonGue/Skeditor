@@ -9,13 +9,13 @@ import SkillGraph.Node;
 
 public class ConstraintUtil {
 
-	private static Category[] mainParent = {Category.MAIN}, mainChild = { Category.OBSERVABLE_EXTERNAL_BEHAVIOR, Category.ACTION, Category.PLANNING , Category.PERCEPTION, Category.ACTUATOR  };
-	private static Category[] obsParent = { Category.MAIN }, obsChild = { Category.ACTION, Category.PLANNING };
+	private static Category[] mainParent = {Category.MAIN}, mainChild = { Category.OBSERVABLE_EXTERNAL_BEHAVIOR, Category.ACTION, Category.PLANNING , Category.PERCEPTION, Category.ACTUATOR ,Category.SENSOR };
+	private static Category[] obsParent = { Category.MAIN , Category.OBSERVABLE_EXTERNAL_BEHAVIOR}, obsChild = { Category.OBSERVABLE_EXTERNAL_BEHAVIOR, Category.ACTION, Category.PLANNING , Category.PERCEPTION };
 	private static Category[] actionParent = { Category.MAIN, Category.OBSERVABLE_EXTERNAL_BEHAVIOR, Category.ACTION },
 			actionChild = { Category.ACTION, Category.PERCEPTION, Category.PLANNING, Category.ACTUATOR };
 	private static Category[] actuatorParent = { Category.MAIN, Category.ACTION }, actuatorChild = {};
 	private static Category[] planningParent = { Category.MAIN, Category.OBSERVABLE_EXTERNAL_BEHAVIOR, Category.ACTION, Category.PLANNING }, planningChild = { Category.PERCEPTION, Category.PLANNING, Category.SENSOR };
-	private static Category[] perceptionParent = { Category.MAIN, Category.PLANNING, Category.ACTION, Category.PERCEPTION }, perceptionChild = { Category.SENSOR, Category.PERCEPTION };
+	private static Category[] perceptionParent = { Category.MAIN, Category.OBSERVABLE_EXTERNAL_BEHAVIOR, Category.PLANNING, Category.ACTION, Category.PERCEPTION }, perceptionChild = { Category.SENSOR, Category.PERCEPTION };
 	private static Category[] sensorParent = { Category.MAIN, Category.PERCEPTION, Category.PLANNING }, sensorChild = {};
 
 	/**
