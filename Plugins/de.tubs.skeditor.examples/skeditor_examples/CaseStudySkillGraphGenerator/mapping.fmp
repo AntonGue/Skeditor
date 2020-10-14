@@ -1,0 +1,16 @@
+graph_files: 'featuregraphs'
+
+basic: 'default.sked'
+
+mapping:
+	city -> {'/city.sked'}
+	elevation -> {'/elevation.sked', '/stop_line.sked'}
+	highway -> {'/highway.sked'}
+	keep_speed -> {'/speed.sked'}
+	lane -> {'/lane.sked'}
+	leading_vehicle -> {'/front_vehicle.sked', '/stop_line.sked'}
+	light -> {'/stop_line.sked'}
+	sign -> {'/sign.sked', '/stop_line.sked'}
+	stop_line -> {'/stop_line.sked'}
+	
+	

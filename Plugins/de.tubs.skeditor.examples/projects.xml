@@ -2,4 +2,5 @@
 <projectRecords>
 	<project name="FollowMode" path="skeditor_examples/FollowMode/.project"/>
 	<project name="Strong Compositionality" path="skeditor_examples/CaseStudyStrongCompositionality/.project"/>
+	<project name="SkillGraph Generator" path="skeditor_examples/CaseStudySkillGraphGenerator/.project"/>
 </projectRecords>

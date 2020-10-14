@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<feature automatic="selected" name="scene"/>
+	<feature automatic="selected" name="domain"/>
+	<feature manual="selected" name="countryroad"/>
+	<feature automatic="unselected" name="city"/>
+	<feature automatic="unselected" name="highway"/>
+	<feature name="layout"/>
+	<feature name="marking"/>
+	<feature name="stop_line"/>
+	<feature name="lane_boundary"/>
+	<feature name="guideline"/>
+	<feature name="crossing"/>
+	<feature name="shoulder"/>
+	<feature name="lane"/>
+	<feature name="centre"/>
+	<feature name="nodepoint"/>
+	<feature name="roundabout"/>
+	<feature name="tilt"/>
+	<feature name="curve"/>
+	<feature name="straight"/>
+	<feature automatic="selected" name="facilities"/>
+	<feature manual="selected" name="elevation"/>
+	<feature name="kerbstone"/>
+	<feature name="planting"/>
+	<feature name="bollard"/>
+	<feature name="bicycle_lane"/>
+	<feature name="light"/>
+	<feature manual="selected" name="sign"/>
+	<feature name="warning"/>
+	<feature name="rule"/>
+	<feature name="regulation"/>
+	<feature name="stop"/>
+	<feature name="give_way"/>
+	<feature name="special"/>
+	<feature name="dynamic_elements"/>
+	<feature name="car"/>
+	<feature name="motorbike"/>
+	<feature name="pedestrian"/>
+	<feature name="bicycle"/>
+	<feature name="leading_vehicle"/>
+	<feature name="environment"/>
+	<feature name="daytime"/>
+	<feature name="morning"/>
+	<feature name="midday"/>
+	<feature name="evening"/>
+	<feature name="night"/>
+	<feature name="weather"/>
+	<feature name="clear"/>
+	<feature name="cloudy"/>
+	<feature name="rain"/>
+	<feature name="hail"/>
+	<feature name="snow"/>
+	<feature name="mist"/>
+	<feature automatic="selected" manual="selected" name="task"/>
+	<feature name="hold_lane"/>
+	<feature name="change_lane"/>
+	<feature name="get_closer"/>
+	<feature name="fall_back"/>
+	<feature name="start"/>
+	<feature name="follow"/>
+	<feature manual="selected" name="keep_speed"/>
+</configuration>

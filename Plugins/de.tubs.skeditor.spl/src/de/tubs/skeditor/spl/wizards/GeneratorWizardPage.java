@@ -161,10 +161,10 @@ public class GeneratorWizardPage extends WizardPage {
 				containerText.setText(container.getFullPath().toString());
 			}
 		}
-		containerText.setText("/Testing");
-		modelText.setText("/Testing/model.xml");
-		configuText.setText("/Testing/configs/default.xml");
-		mappingText.setText("/Testing/mapping.fmp");
+		containerText.setText("/SkillGraph Generator/result"); //prefilled for faster testing
+		modelText.setText("/SkillGraph Generator/model.xml");
+		configuText.setText("/SkillGraph Generator/configs/default.xml");
+		mappingText.setText("/SkillGraph Generator/mapping.fmp");
 		fileText.setText("myGraph.sked");
 	}
 
@@ -278,6 +278,10 @@ public class GeneratorWizardPage extends WizardPage {
 				updateStatus("File extension must be \"sked\"");
 				return;
 			}
+		}
+		if (getFileName().contains("/") || getFileName().contains("\\")) {
+			updateStatus("No folders in file name allowed. Use Container instead.");
+			return;
 		}
 		updateStatus(null);
 	}
