@@ -143,7 +143,11 @@ public class FmpReader {
 	protected static EList<String> extractGraphs(EList<Alloc> allocs) {
 		EList<String> extracted = new BasicEList<String>();
 		for (Alloc iteratorA : allocs) {
-			extracted.addAll(iteratorA.getFeat_graph());
+			for (String iteratorS : iteratorA.getFeat_graph()) {//no duplications
+				if (!extracted.contains(iteratorS)) {
+					extracted.add(iteratorS);
+				}
+			}
 		}
 		return extracted;
 	}
