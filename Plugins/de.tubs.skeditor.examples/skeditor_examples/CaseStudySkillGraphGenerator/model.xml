@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <featureModel>
 	<properties>
+		<graphics key="legendposition" value="1507,40"/>
 		<graphics key="legendautolayout" value="true"/>
 		<graphics key="showshortnames" value="false"/>
 		<graphics key="layout" value="horizontal"/>
@@ -9,75 +10,76 @@
 		<graphics key="layoutalgorithm" value="1"/>
 	</properties>
 	<struct>
-		<and abstract="true" mandatory="true" name="scene">
-			<graphics key="collapsed" value="false"/>
-			<alt abstract="true" mandatory="true" name="domain">
-				<feature name="countryroad"/>
-				<feature name="city"/>
-				<feature name="highway"/>
-			</alt>
-			<and abstract="true" name="layout">
-				<and abstract="true" name="marking">
-					<feature name="stop_line"/>
-					<feature name="lane_boundary"/>
-					<feature name="guideline"/>
-					<feature name="crossing"/>
-					<feature name="shoulder"/>
-					<feature name="lane"/>
-					<feature name="centre"/>
-				</and>
-				<and abstract="true" name="nodepoint">
-					<feature name="roundabout"/>
-				</and>
-				<feature abstract="true" name="tilt"/>
-				<and abstract="true" name="curve">
-					<feature name="straight"/>
-				</and>
-			</and>
-			<and abstract="true" name="facilities">
-				<and name="elevation">
+		<and abstract="true" mandatory="true" name="scenario">
+			<and abstract="true" mandatory="true" name="scene">
+				<graphics key="collapsed" value="false"/>
+				<and name="dynamic_elements">
 					<graphics key="collapsed" value="false"/>
-					<feature name="kerbstone"/>
-					<feature name="planting"/>
-					<feature name="bollard"/>
+					<feature name="car"/>
+					<feature name="motorbike"/>
+					<feature name="pedestrian"/>
+					<feature name="bicycle"/>
+					<feature name="leading_vehicle"/>
 				</and>
-				<feature name="bicycle_lane"/>
-				<feature name="light"/>
-				<and name="sign">
-					<feature abstract="true" name="warning"/>
-					<feature abstract="true" name="rule"/>
-					<and abstract="true" name="regulation">
-						<feature name="stop"/>
-						<feature name="give_way"/>
+				<and abstract="true" mandatory="true" name="setting">
+					<graphics key="collapsed" value="false"/>
+					<alt abstract="true" mandatory="true" name="area">
+						<graphics key="collapsed" value="false"/>
+						<feature name="countryroad"/>
+						<feature name="city"/>
+						<feature name="highway"/>
+					</alt>
+					<and abstract="true" name="environment">
+						<graphics key="collapsed" value="false"/>
+						<alt abstract="true" mandatory="true" name="daytime">
+							<feature name="morning"/>
+							<feature name="midday"/>
+							<feature name="evening"/>
+							<feature name="night"/>
+						</alt>
+						<alt abstract="true" mandatory="true" name="weather">
+							<graphics key="collapsed" value="false"/>
+							<feature name="clear"/>
+							<feature name="cloudy"/>
+							<feature name="rain"/>
+							<feature name="hail"/>
+							<feature name="snow"/>
+							<feature name="mist"/>
+						</alt>
 					</and>
-					<feature abstract="true" name="special"/>
+					<and abstract="true" name="layout">
+						<graphics key="collapsed" value="false"/>
+						<and abstract="true" name="marking">
+							<feature name="stop_line"/>
+							<feature name="lane_boundary"/>
+							<feature name="guideline"/>
+							<feature name="crossing"/>
+							<feature name="shoulder"/>
+							<feature name="lane"/>
+							<feature name="centre"/>
+						</and>
+						<and abstract="true" name="junction">
+							<feature name="roundabout"/>
+						</and>
+						<and abstract="true" name="curve">
+							<feature name="straight"/>
+						</and>
+					</and>
+					<and abstract="true" name="facilities">
+						<graphics key="collapsed" value="false"/>
+						<and name="elevation">
+							<graphics key="collapsed" value="false"/>
+							<feature name="kerbstone"/>
+							<feature name="planting"/>
+							<feature name="bollard"/>
+							<feature name="bicycle_lane"/>
+						</and>
+						<feature name="light"/>
+						<feature name="sign"/>
+					</and>
 				</and>
 			</and>
-			<and name="dynamic_elements">
-				<feature name="car"/>
-				<feature name="motorbike"/>
-				<feature name="pedestrian"/>
-				<feature name="bicycle"/>
-				<feature name="leading_vehicle"/>
-			</and>
-			<and abstract="true" name="environment">
-				<alt abstract="true" mandatory="true" name="daytime">
-					<feature name="morning"/>
-					<feature name="midday"/>
-					<feature name="evening"/>
-					<feature name="night"/>
-				</alt>
-				<alt abstract="true" mandatory="true" name="weather">
-					<graphics key="collapsed" value="false"/>
-					<feature name="clear"/>
-					<feature name="cloudy"/>
-					<feature name="rain"/>
-					<feature name="hail"/>
-					<feature name="snow"/>
-					<feature name="mist"/>
-				</alt>
-			</and>
-			<and abstract="true" name="task">
+			<alt abstract="true" mandatory="true" name="task">
 				<graphics key="collapsed" value="false"/>
 				<feature name="hold_lane"/>
 				<feature name="change_lane"/>
@@ -86,20 +88,34 @@
 				<feature name="start"/>
 				<feature name="follow"/>
 				<feature name="keep_speed"/>
-			</and>
+			</alt>
 		</and>
 	</struct>
 	<constraints>
 		<rule>
 			<imp>
-				<var>centre</var>
+				<disj>
+					<var>centre</var>
+					<disj>
+						<var>shoulder</var>
+						<disj>
+							<var>lane_boundary</var>
+							<var>guideline</var>
+						</disj>
+					</disj>
+				</disj>
 				<var>elevation</var>
 			</imp>
 		</rule>
 		<rule>
 			<imp>
-				<var>bicycle_lane</var>
-				<var>bicycle</var>
+				<var>highway</var>
+				<not>
+					<disj>
+						<var>bicycle_lane</var>
+						<var>bicycle</var>
+					</disj>
+				</not>
 			</imp>
 		</rule>
 	</constraints>
