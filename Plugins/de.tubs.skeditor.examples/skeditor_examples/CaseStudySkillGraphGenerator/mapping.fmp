@@ -1,8 +1,8 @@
-graph_files: 'featuregraphs'
+graph_files: 'featuregraphs' //folder where graphs are stored
 
-basic: 'default.sked'
+basic: 'default.sked' //always used
 
-mapping:
+mapping: //[feature] -> {[graph1], ..., [graph_n]}
 	city -> {'/city.sked'}
 	elevation -> {'/elevation.sked', '/stop_line.sked'}
 	highway -> {'/highway.sked'}
@@ -13,4 +13,5 @@ mapping:
 	sign -> {'/sign.sked', '/stop_line.sked'}
 	stop_line -> {'/stop_line.sked'}
 	
-	
+order:	//this is optional (1st < 2nd < 3rd < ... < nth) does not have to contain all graphs
+	('/front_vehicle.sked' < '/elevation.sked' < '/sign.sked' < '/stop_line.sked')

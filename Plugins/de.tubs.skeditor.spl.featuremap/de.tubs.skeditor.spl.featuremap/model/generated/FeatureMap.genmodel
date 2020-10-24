@@ -10,6 +10,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FeatureMap.ecore#//Model/gpath"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FeatureMap.ecore#//Model/basic"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FeatureMap.ecore#//Model/mapping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FeatureMap.ecore#//Model/partorder"/>
     </genClasses>
     <genClasses ecoreClass="FeatureMap.ecore#//GPath">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FeatureMap.ecore#//GPath/graphspath"/>
@@ -23,7 +24,9 @@
     <genClasses ecoreClass="FeatureMap.ecore#//Alloc">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FeatureMap.ecore#//Alloc/feature"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FeatureMap.ecore#//Alloc/feat_graph"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FeatureMap.ecore#//Alloc/stop"/>
+    </genClasses>
+    <genClasses ecoreClass="FeatureMap.ecore#//Tuple">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FeatureMap.ecore#//Tuple/order"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

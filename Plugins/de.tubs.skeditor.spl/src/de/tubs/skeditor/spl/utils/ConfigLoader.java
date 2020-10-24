@@ -36,20 +36,13 @@ public class ConfigLoader {
 	public Configuration config;
 	
 	public IFeatureModel model;
-	
-//	public ConfigLoader() {
-//		new ConfigLoader(Paths.get("model.xml"), Paths.get("configs/default.xml"));
-//	}
-	
-	public ConfigLoader() {
-	}
-	
-	public ConfigLoader(String configPath, String modelpath) {
+		
+	public ConfigLoader(String configPath, String modelpath) { //initiate with strings
 		config = getConfiguration(Paths.get(configPath), Paths.get(modelpath));
 		model = config.getFeatureModel();
 	}
 	
-	public ConfigLoader(Path configPath, Path modelpath) {
+	public ConfigLoader(Path configPath, Path modelpath) {//initiate with paths
 		config = getConfiguration(configPath, modelpath);
 		model = config.getFeatureModel();
 	}
@@ -133,6 +126,10 @@ public class ConfigLoader {
 		return new Configuration(confi, new FeatureModelFormula(model));
 	} 
 	
+	/**
+	 * Tests if file exists and has the right format
+	 * @param featureModelPath Path to the FeatureModel's .xml file 
+	 */
 	protected void checkFeatureModel(Path featureModelPath) {
 		if ((null == FMFormatManager.getInstance().getFormatByContent(featureModelPath)) ||
 				(!FMFormatManager.getInstance().getFormatByContent(featureModelPath).getId().equals(new XmlFeatureModelFormat().getId()))) {
@@ -140,6 +137,10 @@ public class ConfigLoader {
 		}
 	}
 	
+	/**
+	 * Tests if file exists and has the right format
+	 * @param configurationPath Path to the Configuration's .xml file
+	 */
 	protected void checkConfiguration(Path configurationPath) {
 		if ((null == ConfigFormatManager.getInstance().getFormatByContent(configurationPath)) ||
 				(!ConfigFormatManager.getInstance().getFormatByContent(configurationPath).getId().equals(new XMLConfFormat().getId()))) {
@@ -147,7 +148,10 @@ public class ConfigLoader {
 		}
 	}
 	
-	public Configuration generateConfiguration(IFeatureModel fm, CNF cnf, LiteralSet solution) {
+	/**
+	 * unused remnant
+	 */
+	/*public*/protected Configuration generateConfiguration(IFeatureModel fm, CNF cnf, LiteralSet solution) {
 		Configuration configuration = new Configuration(new FeatureModelFormula(fm));
 		for (final int selection : solution.getLiterals()) {
 			final String name = cnf.getVariables().getName(selection);
@@ -156,7 +160,10 @@ public class ConfigLoader {
 		return configuration;
 	}
 	
-	public Set<String> ConfigurationToString(Configuration c) {
+	/**
+	 * unused remnant
+	 */
+	/*public*/protected Set<String> ConfigurationToString(Configuration c) {
 		Set<String> set = new HashSet<>();
 		for (IFeature sf : c.getSelectedFeatures()) {
 			set.add(sf.getName());

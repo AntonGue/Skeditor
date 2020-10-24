@@ -66,6 +66,7 @@ public class GeneratorWizard extends Wizard implements INewWizard {
 		final String modelName = loadMPage.getModelName();
 		final String configName = loadMPage.getConfigName();
 		final String mapName = loadMPage.getMapName();
+		
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
 				try {
@@ -93,11 +94,13 @@ public class GeneratorWizard extends Wizard implements INewWizard {
 			throws CoreException {
 		// create a sample file
 		monitor.beginTask("Creating " + fileName, 2);
+		
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IResource resource = root.findMember(new Path(containerName));
 		IResource modelRes = root.findMember(new Path(model));
 		IResource configRes = root.findMember(new Path(configuration));
 		IResource mapRes = root.findMember(new Path(map));
+		
 		ConfigLoader confLoad = new ConfigLoader(configRes.getLocation().toString(), modelRes.getLocation().toString());
 		EList<String> graphList = new BasicEList<String>();
 		try {
@@ -107,6 +110,7 @@ public class GeneratorWizard extends Wizard implements INewWizard {
 			fnf.printStackTrace();
 		}
 		graphList = removeRoot(root.getLocation().toString(), graphList);
+		
 		if (!resource.exists() || !(resource instanceof IContainer)) {
 			throwCoreException("Container \"" + containerName + "\" does not exist.");
 		}
@@ -121,10 +125,8 @@ public class GeneratorWizard extends Wizard implements INewWizard {
 			editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain(rSet);
 		}
 		
-		System.out.println("graphList: " + graphList);
-		
 		EList<IFile> deletes = new BasicEList<IFile>();//extra files to delete after
-		for (int i = 1; i < graphList.size(); i++) { // merge over all
+		for (int i = 1; i < graphList.size(); i++) { //merge over all
 			String output = (i-1)+fileName;
 			String graphA = containerName.concat("/".concat((i-2)+fileName));
 			
@@ -134,17 +136,16 @@ public class GeneratorWizard extends Wizard implements INewWizard {
 			if (i == (graphList.size()-1)) { //last merge
 				output = fileName;
 			}
-			else { //add non-final merge to the delete list
+			else { //add non-final merge helpers to the delete list
 				deletes.add(container.getFile(new Path(output)));
 			}
 			
-			System.out.println("Merge " + graphA + " and " + graphList.get(i) + " into " + output);
-			CreateFileOperationCompose operation = new CreateFileOperationCompose(editingDomain, containerName, output,
-					graphA, graphList.get(i));
+			CreateFileOperationCompose operation = new CreateFileOperationCompose(
+					editingDomain, containerName, output, graphA, graphList.get(i));
 			editingDomain.getCommandStack().execute(operation);
 		}
 		
-		removeExtras(deletes);
+		removeExtraIFiles(deletes); //
 
 		// Dispose the editing domain to eliminate memory leak
 		editingDomain.dispose();
@@ -173,26 +174,23 @@ public class GeneratorWizard extends Wizard implements INewWizard {
 		monitor.worked(1);
 
 	}
-	
-	private void removeExtras(EList<IFile> deletes){
-		for (IFile iteratorIF : deletes) {
-			System.out.println("Delete " + iteratorIF);
-			try {
-				iteratorIF.delete(true, null);
-			} catch (CoreException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-//			ResourcesPlugin.getWorkspace().getRoot() container.getFile(new Path(fileName));
-		}
-	}
-	
+	//deletes the root part from every string
 	private EList<String> removeRoot(String root, EList<String> addreses) {
 		EList<String> withoutRoot = new BasicEList<String>();
 		for (String iter : addreses) {
 			withoutRoot.add(iter.replaceAll(root, ""));
 		}
 		return withoutRoot;
+	}
+	//deletes every file in the list
+	private void removeExtraIFiles(EList<IFile> deletes){
+		for (IFile iteratorIF : deletes) {
+			try {
+				iteratorIF.delete(true, null);
+			} catch (CoreException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	private void throwCoreException(String message) throws CoreException {

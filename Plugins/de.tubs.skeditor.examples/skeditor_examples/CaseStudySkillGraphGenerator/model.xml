@@ -29,7 +29,7 @@
 						<feature name="city"/>
 						<feature name="highway"/>
 					</alt>
-					<and abstract="true" name="environment">
+					<and abstract="true" mandatory="true" name="environment">
 						<graphics key="collapsed" value="false"/>
 						<alt abstract="true" mandatory="true" name="daytime">
 							<feature name="morning"/>

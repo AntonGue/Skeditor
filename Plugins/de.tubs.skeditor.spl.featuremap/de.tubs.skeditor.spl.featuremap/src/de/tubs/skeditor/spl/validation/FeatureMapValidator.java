@@ -5,12 +5,15 @@ package de.tubs.skeditor.spl.validation;
 
 import java.util.Iterator;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.validation.Check;
 import de.tubs.skeditor.spl.featureMap.Alloc;
 import de.tubs.skeditor.spl.featureMap.Basic;
 import de.tubs.skeditor.spl.featureMap.FeatureMapPackage;
 import de.tubs.skeditor.spl.featureMap.Mapping;
+import de.tubs.skeditor.spl.featureMap.Model;
+import de.tubs.skeditor.spl.featureMap.Tuple;
 import de.tubs.skeditor.spl.featureMap.GPath;
 
 /**
@@ -23,7 +26,37 @@ public class FeatureMapValidator extends AbstractFeatureMapValidator {
 	public static final String INVALID_NAME = "invalidName";
 	public static final String INVALID_Type = "invalidType";
 	public static final String FEATURE_NAME = "featureName";
-	public static final String STOP_AMOUNT = "stopAmount";
+	public static final String CIRCLE = "Circle";
+	public static final String ORDER_NAME = "orderName";
+	
+	@Check
+	public void checkOrderContent(Tuple tuple) {
+		EList<Alloc> allocs = ((Model) tuple.eContainer()).getMapping().getAllocs();
+		EList<String> fgraphs = new BasicEList<String>();
+		for (Alloc iterata : allocs) {
+			fgraphs.addAll(iterata.getFeat_graph());
+		}
+		EList<String> order = tuple.getOrder();
+		for (String iterate : order) {	
+			if (!fgraphs.contains(iterate)) {
+				warning("'" + iterate + "' not found in mapping",
+					FeatureMapPackage.Literals.TUPLE__ORDER,
+					ORDER_NAME);
+			}
+		}
+	}
+	
+	@Check
+	public void checkCircle(Tuple tuple) {
+		EList<String> order = tuple.getOrder();
+		for (String iterate : order) {
+			if (order.indexOf(iterate) != order.lastIndexOf(iterate)) {
+				error("Circle detected, please remove one '" + iterate + "'",
+						FeatureMapPackage.Literals.TUPLE__ORDER,
+						CIRCLE);
+			}
+		}
+	}
 
 	@Check
 	public void checkPathStartsWithSlash(GPath path) {
@@ -61,16 +94,6 @@ public class FeatureMapValidator extends AbstractFeatureMapValidator {
 	        	}
 	        }
         }
-	}
-	
-	@Check
-	public void checkGraphSet(Alloc alloc) {
-		int graphCount = alloc.getFeat_graph().size();
-				if (alloc.getStop().size()+1 != graphCount) {
-			error("',' is needed or too many",
-					FeatureMapPackage.Literals.ALLOC__STOP,
-					STOP_AMOUNT);
-		}
 	}
 	
 	@Check

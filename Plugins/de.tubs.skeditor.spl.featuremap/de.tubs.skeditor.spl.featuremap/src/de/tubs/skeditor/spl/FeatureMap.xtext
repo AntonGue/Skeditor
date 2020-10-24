@@ -5,7 +5,7 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate featureMap "http://www.tubs.de/skeditor/spl/FeatureMap"
 
 Model:
-	gpath=GPath basic=Basic mapping=Mapping;
+	gpath=GPath basic=Basic mapping=Mapping (partorder=Tuple)?;
 	
 GPath:
 	'graph_files' ':' graphspath=STRING;
@@ -17,7 +17,7 @@ Mapping:
 	'mapping' ':' allocs+=Alloc+;
 	
 Alloc:
-	feature=ID '->' '{' (feat_graph+=STRING stop+=Stop)* feat_graph+=STRING '}';
+	feature=ID '->' '{' (feat_graph+=STRING ',')* feat_graph+=STRING '}';
 	
-Stop:
-	',';
+Tuple:
+	'order' ':' '(' (order+=STRING '<')+ order+=STRING ')';
