@@ -4,7 +4,8 @@ import de.ovgu.featureide.fm.core.configuration.Configuration;
 import de.ovgu.featureide.fm.core.configuration.SelectableFeature;
 import de.ovgu.featureide.fm.core.configuration.Selection;
 import de.tubs.skeditor.spl.FeatureMapStandaloneSetup;
-import de.tubs.skeditor.spl.featureMap.*;
+import de.tubs.skeditor.spl.featureMap.Alloc;
+import de.tubs.skeditor.spl.featureMap.Model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
