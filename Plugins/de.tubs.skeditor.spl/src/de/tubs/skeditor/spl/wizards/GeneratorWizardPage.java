@@ -46,7 +46,8 @@ public class GeneratorWizardPage extends WizardPage {
 		layout.verticalSpacing = 9;
 		
 		Label label = new Label(container, SWT.NULL);
-		label.setText("&Container to save:");
+		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		label.setText("Container to save:");
 
 		containerText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -67,7 +68,8 @@ public class GeneratorWizardPage extends WizardPage {
 		});
 		
 		label = new Label(container, SWT.NULL);
-		label.setText("&XML Model File:");
+		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		label.setText("XML Model File:");
 
 		modelText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		GridData gdX = new GridData(GridData.FILL_HORIZONTAL);
@@ -88,7 +90,8 @@ public class GeneratorWizardPage extends WizardPage {
 		});
 		
 		label = new Label(container, SWT.NULL);
-		label.setText("&XML Configuration File:");
+		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		label.setText("XML Configuration File:");
 
 		configuText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		gdX = new GridData(GridData.FILL_HORIZONTAL);
@@ -109,7 +112,8 @@ public class GeneratorWizardPage extends WizardPage {
 		});
 		
 		label = new Label(container, SWT.NULL);
-		label.setText("&FMP Mapping File:");
+		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		label.setText("FMP Mapping File:");
 
 		mappingText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		gdX = new GridData(GridData.FILL_HORIZONTAL);
@@ -130,7 +134,8 @@ public class GeneratorWizardPage extends WizardPage {
 		});
 		
 		label = new Label(container, SWT.NULL);
-		label.setText("&Graph Name:");
+		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		label.setText("Graph Name:");
 
 		fileText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		gd = new GridData(GridData.FILL_HORIZONTAL);
