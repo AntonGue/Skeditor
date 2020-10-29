@@ -31,7 +31,7 @@
 					</alt>
 					<and abstract="true" mandatory="true" name="environment">
 						<graphics key="collapsed" value="false"/>
-						<alt abstract="true" mandatory="true" name="daytime">
+						<alt abstract="true" mandatory="true" name="time">
 							<feature name="morning"/>
 							<feature name="midday"/>
 							<feature name="evening"/>
@@ -81,11 +81,11 @@
 			</and>
 			<alt abstract="true" mandatory="true" name="task">
 				<graphics key="collapsed" value="false"/>
-				<feature name="hold_lane"/>
+				<feature name="stay_centred"/>
 				<feature name="change_lane"/>
 				<feature name="get_closer"/>
 				<feature name="fall_back"/>
-				<feature name="start"/>
+				<feature name="pull_off"/>
 				<feature name="follow"/>
 				<feature name="keep_speed"/>
 			</alt>
