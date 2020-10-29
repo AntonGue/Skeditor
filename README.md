@@ -14,8 +14,8 @@
     - de.tubs.skeditor.spl.featuremap.ui
     - de.tubs.skeditor.spl.featuremap.ui.test
 4. Follow readme instructions in:
-    - de.tubs.skeditor/libs
-    - de.tubs.skeditor.spl/libs
+    - de.tubs.skeditor/libs/readme.txt
+    - de.tubs.skeditor.spl/libs/readme.txt
 5. Open file "de.tubs.skeditor/model/SkillGraph.genmodel"
     - Right click on "SkillGraph" and select "Generate Model Code"
 6. Open path to "de.tubs.skeditor.spl.featuremap/src/de.tubs.skeditor.spl"
