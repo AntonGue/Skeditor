@@ -47,7 +47,7 @@ public class GeneratorWizardPage extends WizardPage {
 		
 		Label label = new Label(container, SWT.NULL);
 		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		label.setText("Container to save:");
+		label.setText("Container:");
 
 		containerText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -69,7 +69,7 @@ public class GeneratorWizardPage extends WizardPage {
 		
 		label = new Label(container, SWT.NULL);
 		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		label.setText("XML Model File:");
+		label.setText("FeatureModel XML:");
 
 		modelText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		GridData gdX = new GridData(GridData.FILL_HORIZONTAL);
@@ -91,7 +91,7 @@ public class GeneratorWizardPage extends WizardPage {
 		
 		label = new Label(container, SWT.NULL);
 		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		label.setText("XML Configuration File:");
+		label.setText("Configuration XML:");
 
 		configuText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		gdX = new GridData(GridData.FILL_HORIZONTAL);
@@ -113,7 +113,7 @@ public class GeneratorWizardPage extends WizardPage {
 		
 		label = new Label(container, SWT.NULL);
 		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		label.setText("FMP Mapping File:");
+		label.setText("Mapping File FMP:");
 
 		mappingText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		gdX = new GridData(GridData.FILL_HORIZONTAL);
