@@ -8,7 +8,7 @@
       <link businessObjects="/1/@rootNode"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.2 /0/@connections.3"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="120" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="maneuver"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="120" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Manoeuvre"/>
         <link businessObjects="/1/@rootNode"/>
       </children>
     </children>
@@ -17,7 +17,7 @@
       <link businessObjects="/1/@nodes.0"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.0 /0/@connections.10 /0/@connections.20 /0/@connections.21 /0/@connections.34" incomingConnections="/0/@connections.3"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="100" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="plan trajectory"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="100" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Plan Trajectory"/>
         <link businessObjects="/1/@nodes.0"/>
       </children>
     </children>
@@ -26,7 +26,7 @@
       <link businessObjects="/1/@nodes.1"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.1 /0/@connections.4 /0/@connections.14" incomingConnections="/0/@connections.2"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="181" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="adjust automotive dynamics"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="181" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Adjust Automotive Dynamics"/>
         <link businessObjects="/1/@nodes.1"/>
       </children>
     </children>
@@ -35,7 +35,7 @@
       <link businessObjects="/1/@nodes.2"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.5 /0/@connections.7" incomingConnections="/0/@connections.0 /0/@connections.1 /0/@connections.11"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="160" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="estimate proper motion"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="160" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Estimate Proper Motion"/>
         <link businessObjects="/1/@nodes.2"/>
       </children>
     </children>
@@ -44,7 +44,7 @@
       <link businessObjects="/1/@nodes.3"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.6" incomingConnections="/0/@connections.4"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="81" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="accelerate"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="81" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Accelerate"/>
         <link businessObjects="/1/@nodes.3"/>
       </children>
     </children>
@@ -53,7 +53,7 @@
       <link businessObjects="/1/@nodes.4"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.6"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="100" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="power train"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="100" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Power Train"/>
         <link businessObjects="/1/@nodes.4"/>
       </children>
     </children>
@@ -62,7 +62,7 @@
       <link businessObjects="/1/@nodes.5"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.5"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="120" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="vehicle sensors"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="120" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Vehicle Sensors"/>
         <link businessObjects="/1/@nodes.5"/>
       </children>
     </children>
@@ -71,7 +71,7 @@
       <link businessObjects="/1/@nodes.6"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.7 /0/@connections.8 /0/@connections.15 /0/@connections.19 /0/@connections.25 /0/@connections.26 /0/@connections.30"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="camera"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Camera"/>
         <link businessObjects="/1/@nodes.6"/>
       </children>
     </children>
@@ -80,7 +80,7 @@
       <link businessObjects="/1/@nodes.7"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.8 /0/@connections.9" incomingConnections="/0/@connections.12"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="160" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="perceive lane markings"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="160" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Perceive Lane Markings"/>
         <link businessObjects="/1/@nodes.7"/>
       </children>
     </children>
@@ -98,7 +98,7 @@
       <link businessObjects="/1/@nodes.9"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.11 /0/@connections.12 /0/@connections.16 /0/@connections.17 /0/@connections.24" incomingConnections="/0/@connections.10 /0/@connections.22"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="159" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="detect relevant objects"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="159" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Detect Relevant Objects"/>
         <link businessObjects="/1/@nodes.9"/>
       </children>
     </children>
@@ -107,7 +107,7 @@
       <link businessObjects="/1/@nodes.10"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.13" incomingConnections="/0/@connections.14"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="61" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="sheer"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="61" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Sheer"/>
         <link businessObjects="/1/@nodes.10"/>
       </children>
     </children>
@@ -116,7 +116,7 @@
       <link businessObjects="/1/@nodes.11"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.13"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="120" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="steering system"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="120" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Steering System"/>
         <link businessObjects="/1/@nodes.11"/>
       </children>
     </children>
@@ -125,7 +125,7 @@
       <link businessObjects="/1/@nodes.12"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.15" incomingConnections="/0/@connections.16 /0/@connections.20"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="141" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="perceive traffic signs"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="141" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Perceive Traffic Signs"/>
         <link businessObjects="/1/@nodes.12"/>
       </children>
     </children>
@@ -134,7 +134,7 @@
       <link businessObjects="/1/@nodes.13"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.18 /0/@connections.19" incomingConnections="/0/@connections.17"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="181" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="perceive vertical elevations"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="181" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Perceive Vertical Elevations"/>
         <link businessObjects="/1/@nodes.13"/>
       </children>
     </children>
@@ -143,7 +143,7 @@
       <link businessObjects="/1/@nodes.14"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.22 /0/@connections.23 /0/@connections.31" incomingConnections="/0/@connections.21"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="140" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ascertain collision-free"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="140" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Ascertain Collision-Free"/>
         <link businessObjects="/1/@nodes.14"/>
       </children>
     </children>
@@ -152,7 +152,7 @@
       <link businessObjects="/1/@nodes.15"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.25 /0/@connections.27" incomingConnections="/0/@connections.23 /0/@connections.24"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="161" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="perceive static objects"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="161" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Perceive Static Objects"/>
         <link businessObjects="/1/@nodes.15"/>
       </children>
     </children>
@@ -161,7 +161,7 @@
       <link businessObjects="/1/@nodes.16"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.26 /0/@connections.28 /0/@connections.32" incomingConnections="/0/@connections.29 /0/@connections.31"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="160" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="perceive dynamic objects"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="160" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Perceive Dynamic Objects"/>
         <link businessObjects="/1/@nodes.16"/>
       </children>
     </children>
@@ -170,7 +170,7 @@
       <link businessObjects="/1/@nodes.17"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.29 /0/@connections.30 /0/@connections.33" incomingConnections="/0/@connections.35"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="141" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="intention recognition"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="141" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Intention Recognition"/>
         <link businessObjects="/1/@nodes.17"/>
       </children>
     </children>
@@ -179,7 +179,7 @@
       <link businessObjects="/1/@nodes.18"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.35" incomingConnections="/0/@connections.34"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="181" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="cooperation with road users"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="181" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Cooperation With Road Users"/>
         <link businessObjects="/1/@nodes.18"/>
       </children>
     </children>
@@ -615,76 +615,76 @@
     <fonts name="Verdana" size="9" italic="true"/>
   </pi:Diagram>
   <SkillGraph:Graph>
-    <nodes category="lightblue" name="plan trajectory" parentNodes="/1/@rootNode">
+    <nodes category="lightblue" name="Plan Trajectory" parentNodes="/1/@rootNode">
       <childEdges parentNode="/1/@nodes.0" childNode="/1/@nodes.2"/>
       <childEdges parentNode="/1/@nodes.0" childNode="/1/@nodes.9"/>
       <childEdges parentNode="/1/@nodes.0" childNode="/1/@nodes.12"/>
       <childEdges parentNode="/1/@nodes.0" childNode="/1/@nodes.14"/>
       <childEdges parentNode="/1/@nodes.0" childNode="/1/@nodes.18"/>
     </nodes>
-    <nodes category="orange" name="adjust automotive dynamics" parentNodes="/1/@rootNode">
+    <nodes category="orange" name="Adjust Automotive Dynamics" parentNodes="/1/@rootNode">
       <childEdges parentNode="/1/@nodes.1" childNode="/1/@nodes.2"/>
       <childEdges parentNode="/1/@nodes.1" childNode="/1/@nodes.3"/>
       <childEdges parentNode="/1/@nodes.1" childNode="/1/@nodes.10"/>
     </nodes>
-    <nodes category="green" name="estimate proper motion" parentNodes="/1/@nodes.0 /1/@nodes.1 /1/@nodes.9">
+    <nodes category="green" name="Estimate Proper Motion" parentNodes="/1/@nodes.0 /1/@nodes.1 /1/@nodes.9">
       <childEdges parentNode="/1/@nodes.2" childNode="/1/@nodes.5"/>
       <childEdges parentNode="/1/@nodes.2" childNode="/1/@nodes.6"/>
     </nodes>
-    <nodes category="orange" name="accelerate" parentNodes="/1/@nodes.1">
+    <nodes category="orange" name="Accelerate" parentNodes="/1/@nodes.1">
       <childEdges parentNode="/1/@nodes.3" childNode="/1/@nodes.4"/>
     </nodes>
-    <nodes category="red" name="power train" parentNodes="/1/@nodes.3"/>
-    <nodes category="blue" name="vehicle sensors" parentNodes="/1/@nodes.2"/>
-    <nodes category="blue" name="camera" parentNodes="/1/@nodes.2 /1/@nodes.7 /1/@nodes.12 /1/@nodes.13 /1/@nodes.15 /1/@nodes.16 /1/@nodes.17"/>
-    <nodes category="green" name="perceive lane markings" parentNodes="/1/@nodes.9">
+    <nodes category="red" name="Power Train" parentNodes="/1/@nodes.3"/>
+    <nodes category="blue" name="Vehicle Sensors" parentNodes="/1/@nodes.2"/>
+    <nodes category="blue" name="Camera" parentNodes="/1/@nodes.2 /1/@nodes.7 /1/@nodes.12 /1/@nodes.13 /1/@nodes.15 /1/@nodes.16 /1/@nodes.17"/>
+    <nodes category="green" name="Perceive Lane Markings" parentNodes="/1/@nodes.9">
       <childEdges parentNode="/1/@nodes.7" childNode="/1/@nodes.6"/>
       <childEdges parentNode="/1/@nodes.7" childNode="/1/@nodes.8"/>
     </nodes>
     <nodes category="blue" name="LiDAR" parentNodes="/1/@nodes.7 /1/@nodes.13 /1/@nodes.15 /1/@nodes.16"/>
-    <nodes category="lightblue" name="detect relevant objects" parentNodes="/1/@nodes.0 /1/@nodes.14">
+    <nodes category="lightblue" name="Detect Relevant Objects" parentNodes="/1/@nodes.0 /1/@nodes.14">
       <childEdges parentNode="/1/@nodes.9" childNode="/1/@nodes.2"/>
       <childEdges parentNode="/1/@nodes.9" childNode="/1/@nodes.7"/>
       <childEdges parentNode="/1/@nodes.9" childNode="/1/@nodes.12"/>
       <childEdges parentNode="/1/@nodes.9" childNode="/1/@nodes.13"/>
       <childEdges parentNode="/1/@nodes.9" childNode="/1/@nodes.15"/>
     </nodes>
-    <nodes category="orange" name="sheer" parentNodes="/1/@nodes.1">
+    <nodes category="orange" name="Sheer" parentNodes="/1/@nodes.1">
       <childEdges parentNode="/1/@nodes.10" childNode="/1/@nodes.11"/>
     </nodes>
-    <nodes category="red" name="steering system" parentNodes="/1/@nodes.10"/>
-    <nodes category="green" name="perceive traffic signs" parentNodes="/1/@nodes.9 /1/@nodes.0">
+    <nodes category="red" name="Steering System" parentNodes="/1/@nodes.10"/>
+    <nodes category="green" name="Perceive Traffic Signs" parentNodes="/1/@nodes.9 /1/@nodes.0">
       <childEdges parentNode="/1/@nodes.12" childNode="/1/@nodes.6"/>
     </nodes>
-    <nodes category="green" name="perceive vertical elevations" parentNodes="/1/@nodes.9">
+    <nodes category="green" name="Perceive Vertical Elevations" parentNodes="/1/@nodes.9">
       <childEdges parentNode="/1/@nodes.13" childNode="/1/@nodes.8"/>
       <childEdges parentNode="/1/@nodes.13" childNode="/1/@nodes.6"/>
     </nodes>
-    <nodes category="lightblue" name="ascertain collision-free" parentNodes="/1/@nodes.0">
+    <nodes category="lightblue" name="Ascertain Collision-Free" parentNodes="/1/@nodes.0">
       <childEdges parentNode="/1/@nodes.14" childNode="/1/@nodes.9"/>
       <childEdges parentNode="/1/@nodes.14" childNode="/1/@nodes.15"/>
       <childEdges parentNode="/1/@nodes.14" childNode="/1/@nodes.16"/>
     </nodes>
-    <nodes category="green" name="perceive static objects" parentNodes="/1/@nodes.14 /1/@nodes.9">
+    <nodes category="green" name="Perceive Static Objects" parentNodes="/1/@nodes.14 /1/@nodes.9">
       <childEdges parentNode="/1/@nodes.15" childNode="/1/@nodes.6"/>
       <childEdges parentNode="/1/@nodes.15" childNode="/1/@nodes.8"/>
     </nodes>
-    <nodes category="green" name="perceive dynamic objects" parentNodes="/1/@nodes.17 /1/@nodes.14">
+    <nodes category="green" name="Perceive Dynamic Objects" parentNodes="/1/@nodes.17 /1/@nodes.14">
       <childEdges parentNode="/1/@nodes.16" childNode="/1/@nodes.6"/>
       <childEdges parentNode="/1/@nodes.16" childNode="/1/@nodes.8"/>
       <childEdges parentNode="/1/@nodes.16" childNode="/1/@nodes.19"/>
     </nodes>
-    <nodes category="lightblue" name="intention recognition" parentNodes="/1/@nodes.18">
+    <nodes category="lightblue" name="Intention Recognition" parentNodes="/1/@nodes.18">
       <childEdges parentNode="/1/@nodes.17" childNode="/1/@nodes.16"/>
       <childEdges parentNode="/1/@nodes.17" childNode="/1/@nodes.6"/>
       <childEdges parentNode="/1/@nodes.17" childNode="/1/@nodes.20"/>
     </nodes>
-    <nodes category="lightblue" name="cooperation with road users" parentNodes="/1/@nodes.0">
+    <nodes category="lightblue" name="Cooperation With Road Users" parentNodes="/1/@nodes.0">
       <childEdges parentNode="/1/@nodes.18" childNode="/1/@nodes.17"/>
     </nodes>
     <nodes category="blue" name="RADAR" parentNodes="/1/@nodes.16"/>
     <nodes category="blue" name="Car2X" parentNodes="/1/@nodes.17"/>
-    <rootNode name="maneuver">
+    <rootNode name="Manoeuvre">
       <childEdges parentNode="/1/@rootNode" childNode="/1/@nodes.1"/>
       <childEdges parentNode="/1/@rootNode" childNode="/1/@nodes.0"/>
     </rootNode>

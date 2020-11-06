@@ -8,7 +8,7 @@
       <link businessObjects="/1/@nodes.0"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.0"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="camera"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Camera"/>
         <link businessObjects="/1/@nodes.0"/>
       </children>
     </children>
@@ -17,7 +17,7 @@
       <link businessObjects="/1/@nodes.1"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.1" incomingConnections="/0/@connections.2"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="159" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="detect relevant objects"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="159" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Detect Relevant Objects"/>
         <link businessObjects="/1/@nodes.1"/>
       </children>
     </children>
@@ -26,7 +26,7 @@
       <link businessObjects="/1/@nodes.2"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.0" incomingConnections="/0/@connections.1 /0/@connections.3"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="141" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="perceive traffic signs"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="141" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Perceive Traffic Signs"/>
         <link businessObjects="/1/@nodes.2"/>
       </children>
     </children>
@@ -35,7 +35,7 @@
       <link businessObjects="/1/@rootNode"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.2 /0/@connections.3"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="120" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="plan trajectory"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0" width="120" height="50" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Plan Trajectory"/>
         <link businessObjects="/1/@rootNode"/>
       </children>
     </children>
@@ -96,14 +96,14 @@
     <fonts name="Verdana" size="9" italic="true"/>
   </pi:Diagram>
   <SkillGraph:Graph>
-    <nodes category="blue" name="camera" parentNodes="/1/@nodes.2"/>
-    <nodes category="lightblue" name="detect relevant objects" parentNodes="/1/@rootNode">
+    <nodes category="blue" name="Camera" parentNodes="/1/@nodes.2"/>
+    <nodes category="lightblue" name="Detect Relevant Objects" parentNodes="/1/@rootNode">
       <childEdges parentNode="/1/@nodes.1" childNode="/1/@nodes.2"/>
     </nodes>
-    <nodes category="green" name="perceive traffic signs" parentNodes="/1/@nodes.1 /1/@rootNode">
+    <nodes category="green" name="Perceive Traffic Signs" parentNodes="/1/@nodes.1 /1/@rootNode">
       <childEdges parentNode="/1/@nodes.2" childNode="/1/@nodes.0"/>
     </nodes>
-    <rootNode name="plan trajectory">
+    <rootNode name="Plan Trajectory">
       <childEdges parentNode="/1/@rootNode" childNode="/1/@nodes.1"/>
       <childEdges parentNode="/1/@rootNode" childNode="/1/@nodes.2"/>
     </rootNode>

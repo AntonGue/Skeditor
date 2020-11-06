@@ -49,23 +49,23 @@
 					</and>
 					<and abstract="true" name="layout">
 						<graphics key="collapsed" value="false"/>
-						<and abstract="true" name="marking">
+						<or abstract="true" name="marking">
 							<feature name="stop_line"/>
-							<feature name="lane_boundary"/>
-							<feature name="guideline"/>
+							<feature name="solid_line"/>
+							<feature name="broken_line"/>
 							<feature name="crossing"/>
 							<feature name="shoulder"/>
 							<feature name="lane"/>
 							<feature name="centre"/>
-						</and>
+						</or>
 						<and abstract="true" name="junction">
-							<feature name="roundabout"/>
+							<feature mandatory="true" name="roundabout"/>
 						</and>
 						<and abstract="true" name="curve">
-							<feature name="straight"/>
+							<feature mandatory="true" name="straight"/>
 						</and>
 					</and>
-					<and abstract="true" name="facilities">
+					<or abstract="true" name="facilities">
 						<graphics key="collapsed" value="false"/>
 						<and name="elevation">
 							<graphics key="collapsed" value="false"/>
@@ -76,7 +76,7 @@
 						</and>
 						<feature name="light"/>
 						<feature name="sign"/>
-					</and>
+					</or>
 				</and>
 			</and>
 			<alt abstract="true" mandatory="true" name="task">
@@ -99,8 +99,8 @@
 					<disj>
 						<var>shoulder</var>
 						<disj>
-							<var>lane_boundary</var>
-							<var>guideline</var>
+							<var>solid_line</var>
+							<var>broken_line</var>
 						</disj>
 					</disj>
 				</disj>
@@ -116,6 +116,27 @@
 						<var>bicycle</var>
 					</disj>
 				</not>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<conj>
+					<var>city</var>
+					<var>pull_off</var>
+				</conj>
+				<disj>
+					<var>stop_line</var>
+					<disj>
+						<var>light</var>
+						<var>sign</var>
+					</disj>
+				</disj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>roundabout</var>
+				<var>sign</var>
 			</imp>
 		</rule>
 	</constraints>
