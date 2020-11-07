@@ -38,10 +38,11 @@ public class FeatureMapValidator extends AbstractFeatureMapValidator {
 		}
 		EList<String> order = tuple.getOrder();
 		for (String iterate : order) {	
-			if (!fgraphs.contains(iterate)) {
-				warning("'" + iterate + "' not found in mapping",
-					FeatureMapPackage.Literals.TUPLE__ORDER,
-					ORDER_NAME);
+			if (!fgraphs.contains(iterate) &&
+					!((Model) tuple.eContainer()).getBasic().getBasic().equals(iterate)) {
+				warning("'" + iterate + "' not found under basic nor mapping",
+						FeatureMapPackage.Literals.TUPLE__ORDER,
+						ORDER_NAME);
 			}
 		}
 	}

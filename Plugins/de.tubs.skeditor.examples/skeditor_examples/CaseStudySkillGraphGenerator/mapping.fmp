@@ -1,17 +1,21 @@
 graph_files: 'featuregraphs' //folder where graphs are stored
 
-basic: 'default.sked' //always used
+basic: '/basic.sked' //always used
 
-mapping: //[feature] -> {[graph1], ..., [graph_n]}
-	city -> {'/city.sked'}
-	elevation -> {'/elevation.sked', '/stop_line.sked'}
-	highway -> {'/highway.sked'}
-	keep_speed -> {'/speed.sked'}
-	lane -> {'/lane.sked'}
-	leading_vehicle -> {'/front_vehicle.sked', '/stop_line.sked'}
-	light -> {'/stop_line.sked'}
+mapping: //[feature] -> {[graph1.sked], ..., [graph_n.sked]}
+	fall_back -> {'/break.sked'}
+	keep_speed -> {'/break.sked'}
+	follow -> {'/break.sked'}
+	pull_off -> {'/collision_detect.sked'}
+	get_closer -> {'/break.sked', '/relevant_objects.sked'}
+	dynamic_elements -> {'/relevant_objects.sked', '/dynamic_objects.sked', '/coop.sked'}
+	car -> {'/coop.sked', '/car2x.sked'}
+	city -> {'/relevant_objects.sked', '/steer.sked'}
+	lane -> {'/lane_position.sked', '/brake.sked', '/steer.sked'}
+	roundabout -> {'/steer.sked'}
+	stop_line -> {'/relevant_objects.sked', '/stop_line.sked'}
+	elevation -> {'/relevant_objects.sked', '/elevation.sked'}
 	sign -> {'/sign.sked', '/stop_line.sked'}
-	stop_line -> {'/stop_line.sked'}
-	
-order:	//optional (1st < 2nd < 3rd < ... < nth) does not have to contain all graphs
-	('/elevation.sked' < '/city.sked' < '/stop_line.sked' < '/sign.sked')
+	light -> {'/relevant_objects.sked', '/traffic_light.sked', '/stop_line.sked'}
+order:	//this is optional (1st < 2nd < 3rd < ... < nth) does not have to contain all graphs
+	('/basic.sked' < '/relevant_objects.sked' < '/coop.sked' < '/car2x.sked')

@@ -95,27 +95,45 @@
 		<rule>
 			<imp>
 				<disj>
-					<var>centre</var>
+					<var>stay_centred</var>
+					<var>change_lane</var>
+				</disj>
+				<var>lane</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>get_closer</var>
+				<disj>
+					<var>dynamic_elements</var>
 					<disj>
-						<var>shoulder</var>
-						<disj>
-							<var>solid_line</var>
-							<var>broken_line</var>
-						</disj>
+						<var>facilities</var>
+						<var>stop_line</var>
 					</disj>
 				</disj>
-				<var>elevation</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<disj>
+					<var>fall_back</var>
+					<var>follow</var>
+				</disj>
+				<var>leading_vehicle</var>
 			</imp>
 		</rule>
 		<rule>
 			<imp>
 				<var>highway</var>
-				<not>
-					<disj>
-						<var>bicycle_lane</var>
-						<var>bicycle</var>
-					</disj>
-				</not>
+				<conj>
+					<not>
+						<disj>
+							<var>bicycle_lane</var>
+							<var>bicycle</var>
+						</disj>
+					</not>
+					<var>lane</var>
+				</conj>
 			</imp>
 		</rule>
 		<rule>
@@ -124,13 +142,7 @@
 					<var>city</var>
 					<var>pull_off</var>
 				</conj>
-				<disj>
-					<var>stop_line</var>
-					<disj>
-						<var>light</var>
-						<var>sign</var>
-					</disj>
-				</disj>
+				<var>stop_line</var>
 			</imp>
 		</rule>
 		<rule>

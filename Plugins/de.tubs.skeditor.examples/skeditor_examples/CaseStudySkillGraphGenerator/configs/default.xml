@@ -2,12 +2,12 @@
 <configuration>
 	<feature automatic="selected" name="scenario"/>
 	<feature automatic="selected" name="scene"/>
-	<feature automatic="selected" name="dynamic_elements"/>
-	<feature manual="selected" name="car"/>
-	<feature manual="selected" name="motorbike"/>
-	<feature manual="selected" name="pedestrian"/>
+	<feature name="dynamic_elements"/>
+	<feature name="car"/>
+	<feature name="motorbike"/>
+	<feature name="pedestrian"/>
 	<feature name="bicycle"/>
-	<feature manual="selected" name="leading_vehicle"/>
+	<feature name="leading_vehicle"/>
 	<feature automatic="selected" name="setting"/>
 	<feature automatic="selected" name="area"/>
 	<feature manual="selected" name="countryroad"/>
@@ -47,7 +47,7 @@
 	<feature name="bicycle_lane"/>
 	<feature name="light"/>
 	<feature name="sign"/>
-	<feature automatic="selected" name="task"/>
+	<feature automatic="selected" manual="selected" name="task"/>
 	<feature automatic="unselected" name="stay_centred"/>
 	<feature automatic="unselected" name="change_lane"/>
 	<feature automatic="unselected" name="get_closer"/>
