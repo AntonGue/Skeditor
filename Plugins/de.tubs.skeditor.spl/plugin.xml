@@ -8,7 +8,7 @@
 			class="de.tubs.skeditor.spl.wizards.GeneratorWizard"
 			icon="icons/project16.png"
 			id="de.tubs.skeditor.spl.newspl"
-			name="Configurate Skeditor">
+			name="Skeditor Feature Composition">
 		</wizard>
 	</extension>
 	
